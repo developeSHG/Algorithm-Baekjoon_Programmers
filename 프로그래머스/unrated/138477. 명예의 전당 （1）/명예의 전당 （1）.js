@@ -1,17 +1,16 @@
 function solution(k, score) {
-    var answer = [],
-        award = [];
-    // var award = [];
-    for (const iterator of score) {
+    var award = [];
+
+    return score.reduce((a, element) => {
         if (k > award.length) {
-            award.push(iterator);
+            award.push(element);
             award.sort((a, b) => a - b);
-            answer.push(award.at(0));
-        } else if (iterator >= award.at(0)) {
-            award.push(iterator);
+        } else if (element >= award.at(0)) {
+            award.push(element);
             award.sort((a, b) => a - b).shift();
-            answer.push(award.at(0));
-        } else answer.push(award.at(0));
-    }
-    return answer;
+        }
+
+        a.push(award.at(0));
+        return a;
+    }, []);
 }
