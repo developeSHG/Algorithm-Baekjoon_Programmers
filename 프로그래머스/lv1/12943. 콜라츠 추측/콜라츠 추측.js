@@ -1,5 +1,4 @@
 function solution(num) {
-    if (num === 1) return 0;
     let cnt = 0;
 
     function Collatz(val) {
@@ -8,5 +7,5 @@ function solution(num) {
         return Collatz(val % 2 ? val * 3 + 1 : val / 2);
     }
 
-    return Collatz(num);
+    return num == 1 ? cnt : Collatz(num);
 }
