@@ -8,7 +8,6 @@ function solution(s) {
         ++convert;
 
         s = s.length.toString(2);
-        
     }
 
     return [convert, erase];
