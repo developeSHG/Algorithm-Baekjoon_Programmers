@@ -1,11 +1,1 @@
-function solution(citations) {
-    citations.sort((a, b) => b - a);
-    let answers = 0;
-
-    for (let i = 0; i < citations.length; i++) {
-        if (i < citations[i]) answers++;
-        else break;
-    }
-
-    return answers;
-}
+const solution = (citations) => citations.sort((a, b) => b - a).filter((e, idx) => e > idx).length;
