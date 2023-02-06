@@ -5,8 +5,8 @@ const solution = (s) => {
         "{": "}",
     };
     return [...s].reduce((acc, el, idx) => {
-        const stack = [];
-        for (let i = 0; i < s.length; ++i) {
+        const stack = [el];
+        for (let i = 1; i < s.length; ++i) {
             const a = (idx + i) % s.length;
 
             if (Object.keys(obj).find((key) => key === s[a])) stack.push(s[a]);
