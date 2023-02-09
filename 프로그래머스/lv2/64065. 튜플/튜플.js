@@ -6,7 +6,7 @@ function solution(s) {
             acc.forEach((v) => el = el.filter((o) => o !== v));
             acc.push(el.join());
         }
-        else if (acc.length > el.length) {
+        else {
             el.forEach((v) => acc = acc.filter((o) => o !== v));
             acc.unshift(v);
         }
