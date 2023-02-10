@@ -1,6 +1,6 @@
 function solution(n, left, right) {
-    var answer = [];
-    for (let i = left; i <= right; ++i)
-        answer.push(Math.max(Math.floor(i / n) + 1, i % n + 1));
-    return answer;
+    return Array.from({ length: right - left + 1 }, (undefined, idx) => {
+        idx += left;
+        return Math.max(parseInt(idx / n) + 1, idx % n + 1);
+    });
 }
