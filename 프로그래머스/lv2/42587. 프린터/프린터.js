@@ -1,6 +1,6 @@
 function solution(priorities, location) {
     const recursive = (res, data) => {
-        if (data.filter((e, i) => data[0] < e && 0 < i).length <= 0) {
+        if (!data.some((e, i) => data[0] < e && 0 < i)) {
             if (0 == location) return res.length + 1;
             res.push(data[0]);
             --location;
