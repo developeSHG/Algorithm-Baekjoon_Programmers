@@ -25,6 +25,6 @@ function solution(str1, str2) {
         return false;
     }).length;
 
-    return (intersection || !(str[0].length === 0 && str[1].length === 0))
+    return (intersection || str[0].length || str[1].length)
         ? Math.floor((intersection / (str[0].length + str[1].length - intersection)) * 65536) : 65536;
 }
