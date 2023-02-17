@@ -1,12 +1,11 @@
 function solution(land) {
-    var answer = 0;
+    return Math.max(...land.reduce((acc, arr, idx) => {
+        if (acc.length <= 0)
+            return arr;
 
-    return Math.max(...land.reduce((a, c) => {
-        return [
-            c[0] + Math.max(a[1], a[2], a[3]),  
-            c[1] + Math.max(a[0], a[2], a[3]),
-            c[2] + Math.max(a[0], a[1], a[3]),
-            c[3] + Math.max(a[0], a[1], a[2]),
-        ];
-    }, [0, 0, 0, 0]));
+        const max = Math.max(...acc);
+        const maxIdx = acc.findIndex((e) => e === max);
+        const nextMax = Math.max(...acc.filter((_, idx) => idx !== maxIdx));
+        return arr.map((e, i) => (i !== maxIdx) ? e + max : e + nextMax);
+    }, []));
 }
