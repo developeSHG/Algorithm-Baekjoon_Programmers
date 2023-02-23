@@ -17,9 +17,8 @@ function solution(numbers) {
         for (let i = 0; i < arr.length; ++i) {
             if (visit[i]) continue;
 
-            const next = (value.toString() + arr[i]);
             visit[i] = true;
-            dfs(next * 1, i);
+            dfs((value.toString() + arr[i]) * 1, i);
             visit[i] = false;
         }
     })(0);
