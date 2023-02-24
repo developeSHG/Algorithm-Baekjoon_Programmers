@@ -4,14 +4,14 @@ const Show = {
 };
 
 function solution(record) {
-    const nicknname = {};
+    const nicknName = {};
     const output = [];
 
     record.forEach((e) => {
         const [execution, id, name] = e.split(' ');
 
-        if (["Enter", "Change"].includes(execution)) nicknname[id] = name;
+        if (["Enter", "Change"].includes(execution)) nicknName[id] = name;
         if (["Enter", "Leave"].includes(execution)) output.push([execution, id]);
     });
-    return output.map(e => nicknname[e[1]] + Show[e[0]]);
+    return output.map(([execution, id]) => `${nicknName[id]}${Show[execution]}`);
 }
