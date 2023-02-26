@@ -6,9 +6,6 @@ function solution(number, k) {
                 --k;
             }
             stack.push(el);
-            
-            if (k > 0 && idx === number.length - 1) stack.splice(stack.length - k, k);
-            return stack;
-        }, [])
-        .join("");
+            return (k > 0 && idx === number.length - 1) ? stack.slice(0, stack.length - k) : stack;
+        }, []).join("");
 }
