@@ -1,20 +1,9 @@
 function solution(n) {
-    let temp = n,
-        answer = [],
-        multiple = n % 3 === 0;
+  var answer = "", array1_2_4 = new Array(4, 1, 2);
 
-    if (multiple) --temp;
-    while (temp !== 0) {
-        let remain = parseInt(temp % 3);
-        if (remain) answer.unshift(remain);
-        else {
-            answer.unshift(4);
-            temp--;
-        }
-        temp = parseInt(temp / 3);
-    }
-    answer = answer.join("");
-
-    if (multiple) answer = answer * 1 + 2;
-    return answer.toString();
+  while(n) {
+    answer = array1_2_4[n % 3] + answer;
+    n = Math.floor((n - 1) / 3);
+  }
+  return answer;
 }
