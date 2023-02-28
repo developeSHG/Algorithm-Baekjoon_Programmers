@@ -18,17 +18,15 @@ function solution(orders, course) {
         let [pivot, arr] = [0, []];
         const result = orders.reduce((obj, str) => combination(0, 0, [], n, str, obj), {});
 
-        for (key in result) {
-            if (result[key] < 2) continue;
-
-            if (result[key] > pivot) {
-                pivot = result[key];
+        Object.entries(result).forEach(([key, value]) => {
+            if (value < 2 || value < pivot) return;
+            
+            if (value > pivot) {
+                pivot = value;
                 arr.length = 0;
-                arr.push(key);
-            }
-            else if (result[key] === pivot)
-                arr.push(key);
-        }
+            }    
+            arr.push(key);
+        });
         return acc.concat(arr);
     }, []).sort();
 }
