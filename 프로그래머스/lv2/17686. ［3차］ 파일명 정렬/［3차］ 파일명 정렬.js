@@ -3,7 +3,7 @@ function solution(files) {
         const HEAD = file.match(/\D+/g)[0],
             NUMBER = file.match(/\d+/g)[0],
             TAIL = file.slice(file.indexOf(NUMBER) + NUMBER.length, file.length);
-        return { HEAD: HEAD, NUMBER, NUMBER, TAIL: TAIL };
+        return { HEAD, NUMBER, TAIL };
     }).sort((a, b) => {
         const [A, B] = [a.HEAD.toLowerCase(), b.HEAD.toLowerCase()];
         if (A > B) return 1;
