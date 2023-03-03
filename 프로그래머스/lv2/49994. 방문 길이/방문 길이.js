@@ -14,8 +14,7 @@ const solution = (dirs) => {
         (command === 'D') ? --acc.pos[y] : (command === 'U') ? ++acc.pos[y] : 0;
 
         if (!acc.history[[prev, acc.pos]] && !acc.history[[acc.pos, prev]]) {
-            acc.history[[prev, acc.pos]] = true;
-            acc.history[[acc.pos, prev]] = true;
+            acc.history[[prev, acc.pos]] = acc.history[[acc.pos, prev]] = true;
             ++acc.move;
         }
         return acc;
