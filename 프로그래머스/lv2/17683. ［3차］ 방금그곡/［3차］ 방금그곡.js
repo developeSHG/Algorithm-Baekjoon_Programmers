@@ -8,7 +8,6 @@ function solution(m, musicinfos) {
         const sheet = tempSheet.replaceAll('C#', 'c').replaceAll('D#', 'd').replaceAll('F#', 'f').replaceAll('G#', 'g').replaceAll('A#', 'a');
         const newSheet = sheet.repeat(Math.floor(TIME / sheet.length)) + sheet.substr(0, Math.floor(TIME % sheet.length));
 
-        if (newSheet.includes(m) && TIME > acc.TIME) acc = { TITLE, TIME };
-        return acc;
+        return (newSheet.includes(m) && TIME > acc.TIME) ? { TITLE, TIME } :acc;
     }, { TITLE: "(None)", TIME: 0 }).TITLE;
 }
