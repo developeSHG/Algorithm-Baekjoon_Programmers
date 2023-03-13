@@ -1,22 +1,20 @@
 const permutation = (operation, visited, priority, max, expression) => {
     if (operation.length === visited.filter((o) => o).length) {
-        const temp = [...expression];
-        const tempPriority = [...priority];
+        const [tempExp, tempPrior] = [[...expression], [...priority]];
 
-        while (tempPriority.length) {
-            const op = tempPriority.shift();
+        while (tempPrior.length) {
+            const op = tempPrior.shift();
 
-            let idx = temp.indexOf(op);
+            let idx = tempExp.indexOf(op);
             while (idx !== -1) {
-                const sum = eval(temp[idx - 1] + op + temp[idx + 1]);
-                temp.splice(idx - 1, 3, sum);
+                const sum = eval(tempExp[idx - 1] + op + tempExp[idx + 1]);
+                tempExp.splice(idx - 1, 3, sum);
 
-                idx = temp.indexOf(op);
+                idx = tempExp.indexOf(op);
             }
         }
-        // console.log(temp);
 
-        return Math.max(max, Math.abs(parseInt(temp)));
+        return Math.max(max, Math.abs(parseInt(tempExp)));
     }
 
     for (let i = 0; i < operation.length; ++i) {
@@ -30,11 +28,4 @@ const permutation = (operation, visited, priority, max, expression) => {
     return max;
 };
 
-const solution = (expression) =>
-    permutation(
-        ["+", "-", "*"],
-        new Array(3).fill(false),
-        [],
-        0,
-        expression.match(/\d+|[\-\+\*]/g)
-    );
+const solution = (expression) => permutation(["+", "-", "*"], new Array(3).fill(false), [], 0, expression.match(/\d+|[\-\+\*]/g));
