@@ -1,28 +1,22 @@
-const solution = (N, road, K) => {
-  const dis = new Array(N + 1).fill(Infinity);
-  const graph = Array.from(Array(N + 1), () => []);
-  for (let [from, to, cost] of road) {
-    // 무방향 그래프
-    graph[from].push({ to: to, cost: cost });
-    graph[to].push({ to: from, cost: cost });
-  }
+function solution(N, road, K) {
+    const graph = road.reduce((obj, [p1, p2, t]) => {
+        (obj[p1] = obj[p1] || {}), (obj[p2] = obj[p2] || {});
+        obj[p1][p2] = obj[p2][p1] = Math.min(obj[p1][p2] ? obj[p1][p2] : Infinity, t);
+        return obj;
+    }, {});
 
-  const queue = [];
+    const stack = [{ dest: 1, cost: 0 }],
+        distance = new Array(N + 1).fill(Infinity);
 
-  // 첫 노드로 가는 정보를 큐에 삽입하고 bfs를 시작.
-  queue.push({ to: 1, cost: 0 });
-  dis[1] = 0;
+    while (stack.length) {
+        const { dest: cur, cost: cost } = stack.shift();
 
-  while (queue.length) {
-    const { to: cur, cost: cost } = queue.shift();
-    for (let next of graph[cur]) {
-      // 다음 좌표의 dis값과 현재 dis값과 다음좌표로가는 코스트
-      if (dis[next.to] > dis[cur] + next.cost) {
-        dis[next.to] = dis[cur] + next.cost;
-        queue.push(next);
-      }
+        if (distance[cur] > cost) distance[cur] = cost;
+
+        for (const dest in graph[cur]) {
+            if (distance[dest] < cost + graph[cur][dest]) continue;
+            stack.push({ dest: dest, cost: cost + graph[cur][dest] });
+        }
     }
-  }
-
-  return dis.filter((e) => e <= K).length;
-};
+    return distance.filter((e) => e !== Infinity && e <= K).length;
+}
