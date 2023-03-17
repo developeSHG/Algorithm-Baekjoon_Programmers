@@ -16,8 +16,8 @@ class Tree {
     }
 
     setDiff(v1, v2) {
-        const len = this.getCount(v1, v2);
-        this.min = Math.min(this.min, Math.abs(this.tree.length - 1 - len * 2));
+        const diff = Math.abs(this.getCount(v1, v2) * 2 - (this.tree.length - 1)); // 전력망 차이 Count - (Length - Count);
+        this.min = Math.min(this.min, diff);
     }
 
     getCount(v, except) {
