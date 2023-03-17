@@ -1,4 +1,4 @@
-const dfs = (graph, pivot, visited, vistedDuplication) => {
+const bfs = (graph, pivot, visited, vistedDuplication) => {
     const queue = [pivot];
     let cnt = 0;
 
@@ -27,11 +27,11 @@ function solution(n, wires) {
     graph.forEach((form, idx) => {
         for (const division of form) {
             visitedNone[idx] = visitedDivision[idx] = true;
-            const divisionCnt = dfs(graph, division, visitedDivision, visitedNone);
+            const divisionCnt = bfs(graph, division, visitedDivision, visitedNone);
 
             let nodeCnt = 1;
             for (const node of form.filter((e) => e !== division))
-                nodeCnt += dfs(graph, node, visitedNone, visitedDivision);
+                nodeCnt += bfs(graph, node, visitedNone, visitedDivision);
 
             result = Math.min(result, Math.abs(divisionCnt - nodeCnt));
 
@@ -39,6 +39,5 @@ function solution(n, wires) {
             visitedNone.fill(false);
         }
     });
-
     return result;
 }
