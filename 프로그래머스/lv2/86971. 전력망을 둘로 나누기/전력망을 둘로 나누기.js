@@ -1,43 +1,36 @@
-const bfs = (graph, pivot, visited, vistedDuplication) => {
-    const queue = [pivot];
-    let cnt = 0;
-
-    while (queue.length) {
-        const dest = queue.shift();
-        if (vistedDuplication[dest]) return Infinity;
-
-        (visited[dest] = true), ++cnt;
-        for (const to of graph[dest]) {
-            if (visited[to]) continue;
-            queue.push(to);
-        }
+class Tree {
+    constructor(n) {
+        this.tree = new Array(n + 1);
+        this.min = n;
     }
-    return cnt;
-};
+
+    setConnect(v1, v2) {
+        this.connect(v1, v2);
+        this.connect(v2, v1);
+    }
+
+    connect(v, target) {
+        const connects = this.tree[v] || [];
+        connects.push(target);
+        this.tree[v] = connects;
+    }
+
+    setDiff(v1, v2) {
+        const len = this.getCount(v1, v2);
+        this.min = Math.min(this.min, Math.abs(this.tree.length - 1 - len * 2));
+    }
+
+    getCount(v, except) {
+        return this.tree[v].reduce((acc, cur) => {
+            if (cur === except) return acc;
+            return acc + this.getCount(cur, v);
+        }, 1);
+    }
+}
 
 function solution(n, wires) {
-    const graph = wires.reduce((acc, [a, b]) => {
-            acc[a].push(b), acc[b].push(a);
-            return acc;
-        }, Array.from(Array(n + 1), () => []));
-
-    const visitedNone = visitedDivision = new Array(n + 1).fill(false);
-
-    let result = Infinity;
-    graph.forEach((form, idx) => {
-        for (const division of form) {
-            visitedNone[idx] = visitedDivision[idx] = true;
-            const divisionCnt = bfs(graph, division, visitedDivision, visitedNone);
-
-            let nodeCnt = 1;
-            for (const node of form.filter((e) => e !== division))
-                nodeCnt += bfs(graph, node, visitedNone, visitedDivision);
-
-            result = Math.min(result, Math.abs(divisionCnt - nodeCnt));
-
-            visitedDivision.fill(false);
-            visitedNone.fill(false);
-        }
-    });
-    return result;
+    const tree = new Tree(n);
+    wires.forEach(([v1, v2]) => tree.setConnect(v1, v2));
+    wires.forEach(([v1, v2]) => tree.setDiff(v1, v2));
+    return tree.min;
 }
