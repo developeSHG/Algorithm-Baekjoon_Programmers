@@ -4,10 +4,11 @@ function solution(places) {
         // itv가 2인 데이터인것들만 추출해서 그 사이 경로에 X가 있는지 체크하는 게 더 효율적이라 판단.
 
         const peoples = []; // P인 데이터만 담아둘 배열
-        for (let i = 0; i < data.length; ++i) {
-            for (let j = 0; j < data[0].length; ++j)
-                if (data[i][j] === "P") peoples.push([i, j]);
-        }
+        data.forEach((el, i) => {
+           [...el].forEach((el, j) => {
+               if (el === "P") peoples.push([i, j]);
+           })
+        });
 
         const between = []; // 간격이 2인 인덱스들만 담아서, 중간에 X가 있는지 체크할 배열
         for (let i = 0; i < peoples.length - 1; ++i) {
