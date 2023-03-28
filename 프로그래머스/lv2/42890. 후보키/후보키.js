@@ -25,7 +25,7 @@ const uniqueness = (relation, elements, row) => {
 
 // 최소성 체크
 const minimality = (answer, elements) => {
-    return answer.length 
+    return answer.length
         ? answer.every((arr) => arr.filter((a) => elements.some((b) => a === b)).length !== arr.length)
         : true;
 };
@@ -35,9 +35,9 @@ function solution(relation) {
     const [attribute, row, column] = [Array.from({ length: relation[0].length }, (_, idx) => idx), relation.length, relation[0].length];
 
     for (let i = 1; i <= column; ++i) {
-        const combinations = getCombination(attribute, i);
+        const combinations = getCombination(attribute, i); // '조합'으로 경우의 수를 만든다.
         combinations.forEach((elements) => {
-            if (uniqueness(relation, elements, row) && minimality(answer, elements))
+            if (uniqueness(relation, elements, row) && minimality(answer, elements)) // 유일성 & 최소성 체크
                 answer.push(elements);
         });
     }
