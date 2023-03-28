@@ -1,9 +1,1 @@
-function solution(babbling) {
-    return babbling.filter((el, idx) => {
-        let len = el.length;
-        ["aya", "ye", "woo", "ma"].forEach((t) => {
-            if (el.indexOf(t) != -1 && len >= t.length) len -= t.length;
-        });
-        return !len;
-    }).length;
-}
+const solution = (babbling) => babbling.filter((el, idx) =>  !["aya", "ye", "woo", "ma"].reduce((acc, t) => acc -= (el.indexOf(t) != -1 && acc >= t.length) ? t.length : 0, el.length)).length;
