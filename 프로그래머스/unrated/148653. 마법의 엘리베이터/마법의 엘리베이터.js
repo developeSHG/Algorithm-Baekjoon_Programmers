@@ -1,16 +1,16 @@
 function solution(storey) {
-    let plus = false;
-    storey = [...storey.toString()].reverse();
-    return storey.reduce((acc, el, idx) => {
-        el *= 1;
+    storey = storey.toString();
+    let result = Infinity;
 
-        if (plus && el === 9) return ++acc;
+    (dfs = (pivot, acc, add) => {
+        if (pivot < 0) {
+            result = Math.min(result, acc + add);
+            return result;
+        }
 
-        plus = el > 5;
-        if (idx !== storey.length - 1 && el > 5 && storey[idx + 1] !== "9")
-            ++acc;
-
-        acc += el > 5 ? 10 - el : el;
-        return acc;
-    }, 0);
+        const num = parseInt(storey[pivot]) + add;
+        dfs(pivot - 1, acc + num, 0);
+        dfs(pivot - 1, acc + 10 - num, 1);
+    })(storey.length - 1, 0, 0);
+    return result;
 }
