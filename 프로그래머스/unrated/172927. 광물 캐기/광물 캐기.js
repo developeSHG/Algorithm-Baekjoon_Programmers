@@ -17,16 +17,12 @@ function solution(picks, minerals) {
         for (let i = 0; i < picks.length; ++i) {
             if (!picks[i]) continue;
 
-            if (i === 0)
-                e.forEach((el) => answer += el);
-            else {
-                e.forEach((el, idx) => {
-                    if (idx < i) answer += Math.pow(5, i - idx) * el;
-                    else answer += el;
-                })
-            }
-
+            e.forEach((el, idx) => {
+                if (idx < i) answer += Math.pow(5, i - idx) * el;
+                else answer += el;
+            })
             --picks[i];
+
             return;
         }
     });
