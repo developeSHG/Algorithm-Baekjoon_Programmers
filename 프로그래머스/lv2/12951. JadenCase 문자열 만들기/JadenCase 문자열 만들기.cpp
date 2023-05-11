@@ -4,15 +4,11 @@
 using namespace std;
 
 string solution(string s) {
-    string answer;
+    string answer = "";
+    answer = toupper(s[0]);
     
-	for (int i = 0; i < s.length(); ++i)
-	{
-		if (i == 0 || isspace(s[i - 1]) && !isdigit(s[i]))
-			answer += toupper(s[i]);
-		else
-			answer += tolower(s[i]);
-	}
+	for (int i = 1; i < s.length(); ++i)
+        answer += (isspace(s[i - 1]) && !isdigit(s[i])) ? toupper(s[i]) : tolower(s[i]);
 
 	return answer;
 }
