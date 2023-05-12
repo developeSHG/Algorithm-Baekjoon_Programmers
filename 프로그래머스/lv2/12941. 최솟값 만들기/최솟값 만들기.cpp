@@ -1,17 +1,12 @@
 #include <iostream>
-#include<vector>
+#include <vector>
+#include <numeric>
 #include <algorithm>
 using namespace std;
 
 int solution(vector<int> A, vector<int> B)
 {
-    int answer = 0;
-
-    sort(A.begin(), A.end());
-    sort(B.rbegin(), B.rend());
-
-    for (int i = 0; i < A.size(); ++i)
-        answer += A[i] * B[i];
-
-    return answer;
+    sort(A.begin(),A.end()); 
+    sort(B.rbegin(),B.rend());
+    return inner_product(A.begin(), A.end(), B.begin(), 0);
 }
