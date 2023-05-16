@@ -7,7 +7,7 @@
 using namespace std;
 
 vector<int> solution(string s) {
-    int count = 0, erase = 0;
+    int count{0}, erase{0};
 
     while (s != "1")
     {
