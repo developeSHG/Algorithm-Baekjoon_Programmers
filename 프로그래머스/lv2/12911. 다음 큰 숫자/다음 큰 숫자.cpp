@@ -20,7 +20,7 @@ int bit1_number(int n)
 
 int solution(int n) {
     int result = bit1_number(n);
-    while (result != bit1_number(n + 1)) ++n;
+    while (result != bit1_number(++n));
 
-    return ++n;
+    return n;
 }
