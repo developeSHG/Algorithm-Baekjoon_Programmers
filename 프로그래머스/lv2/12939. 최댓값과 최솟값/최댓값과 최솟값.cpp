@@ -27,9 +27,3 @@ string solution(string s)
 	answer += to_string(v1.back()) + " " +to_string(v1.front());
 	return answer;
 }
-
-int main()
-{
-	cout << solution("1 2 3 4");
-	return 0;
-}
