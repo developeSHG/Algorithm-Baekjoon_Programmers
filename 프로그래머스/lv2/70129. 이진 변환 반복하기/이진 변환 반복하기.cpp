@@ -22,5 +22,5 @@ vector<int> solution(string s) {
         ++count;
     }
 
-    return vector<int>{ count, erase };
+    return { count, erase };
 }
