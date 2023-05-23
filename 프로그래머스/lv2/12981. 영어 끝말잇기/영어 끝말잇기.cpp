@@ -18,8 +18,7 @@ vector<int> solution(int n, vector<string> words) {
         if (s.find(str) != s.end() || lastWord != str.front())
             return true;
         
-        s.insert(str);
-        lastWord = str.back();
+        s.insert(str), lastWord = str.back();
         return false;
     });
     
