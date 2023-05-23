@@ -1,10 +1,10 @@
 # [level 2] 짝지어 제거하기 - 12973 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12973?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12973) 
 
 ### 성능 요약
 
-메모리: 46.9 MB, 시간: 27.76 ms
+메모리: 6.52 MB, 시간: 5.00 ms
 
 ### 구분
 
@@ -12,7 +12,7 @@
 
 ### 채점결과
 
-<br/>정확성: 60.2<br/>효율성: 39.8<br/>합계: 100.0 / 100.0
+Empty
 
 ### 문제 설명
 
