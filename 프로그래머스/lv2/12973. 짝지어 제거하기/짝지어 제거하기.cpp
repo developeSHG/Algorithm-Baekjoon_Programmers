@@ -14,5 +14,5 @@ int solution(string s)
         (!_stack.size() || _stack.top() != n) ? _stack.push(n) : _stack.pop();
     });
 
-    return _stack.empty() ? 1 : 0;
+    return _stack.empty();
 }
