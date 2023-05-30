@@ -10,6 +10,7 @@ int solution(vector<int> people, int limit) {
 
     sort(people.begin(), people.end());
     
+    // 투포인터 방식
     while (leftPointer <= rightPointer)
     {
         if (people[leftPointer] + people[rightPointer] <= limit)
