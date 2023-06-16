@@ -8,7 +8,6 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     vector<int> answer;
 
     int day = 0;
-    int sum = 0;
 
     for (auto iter = progresses.begin(); iter != progresses.end(); ++iter)
     {
@@ -17,15 +16,13 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
 
         if (day == 0) day = time;
 
-        if (day < time)
+        if (answer.empty() || day < time)
         {
-            answer.emplace_back(sum);
+            answer.emplace_back(1);
             day = time;
-            sum = 1;
         }
-        else ++sum;
+        else ++answer.back();
     }
-    answer.emplace_back(sum);
 
     return answer;
 }
