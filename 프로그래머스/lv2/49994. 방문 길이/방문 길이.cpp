@@ -19,7 +19,7 @@ bool move(int& x, int& y, int moveX, int moveY)
 int solution(string dirs) {
     int answer = 0, x = 0, y = 0;
     enum { U, D, R, L };
-    int dirX[] = {0, 0, 1, -1},
+    int dirX[] = { 0, 0, 1, -1 },
         dirY[] = { 1, -1, 0, 0 };
     unordered_map<int, set<int>> m;
 
@@ -32,21 +32,18 @@ int solution(string dirs) {
         else if (dirs[i] == 'R') dirIdx = R, prevIdx = L;
         else if (dirs[i] == 'L') dirIdx = L, prevIdx = R;
 
-        const int prevID = x * 100 + y; // 자신만의 고유 ID
+        const int prevID = x * 100 + y; // 자신만의 이전 인덱스 고유 ID
         if (move(x, y, dirX[dirIdx], dirY[dirIdx]))
         {
-            const int newID = x * 100 + y; // 자신만의 고유 ID
+            const int newID = x * 100 + y; // 자신만의 새로운 인덱스 고유 ID
             if (m.find(prevID) != m.end()
                 && m[prevID].find(dirIdx) != m[prevID].end())
                 continue;
-            if (m.find(newID) != m.end()
-                && m[newID].find(prevIdx) != m[newID].end())
-                continue;
-                
-            m[prevID].insert(dirIdx), m[newID].insert(prevIdx);
+
+            m[prevID].insert(dirIdx); // prev -> new 방향
+            m[newID].insert(prevIdx); // new -> prev 방향
             ++answer;
         }
     }
-   
     return answer;
 }
