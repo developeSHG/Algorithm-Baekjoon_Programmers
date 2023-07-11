@@ -24,7 +24,6 @@ using p = pair<int, int>;
 int solution(vector<vector<int>> maps)
 {
     int n = maps.size(), m = maps[0].size();
-    int dist = 1;
     const vector<vector<int>> dir = { {1, 0}, {0, -1}, {0, 1}, {-1, 0} };
     queue<p> q;
 
