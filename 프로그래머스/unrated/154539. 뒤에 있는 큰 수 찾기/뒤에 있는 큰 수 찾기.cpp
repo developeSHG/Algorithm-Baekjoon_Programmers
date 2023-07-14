@@ -7,7 +7,7 @@ using namespace std;
 using p = pair<int, int>;
 
 vector<int> solution(vector<int> numbers) {
-    vector<int> answer;
+    vector<int> answer(numbers.size(), -1);
     stack<p> st;
 
     answer.resize(numbers.size());
@@ -21,12 +21,5 @@ vector<int> solution(vector<int> numbers) {
         }
         st.push(make_pair(i, numbers[i]));
     }
-
-    while (!st.empty())
-    {
-        answer[st.top().first] = -1;
-        st.pop();
-    }
-
     return answer;
 }   
