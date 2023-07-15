@@ -4,11 +4,11 @@
 
 using namespace std;
 
-enum EType { HEAD, NUMBER };
+enum EType { HEAD, NUMBER, END };
 
 vector<string> conversion(const string& file)
 {
-    vector<string> v{ 2, "" }; //  HEAD, NUMBER 만 사용
+    vector<string> v{ END, "" }; //  HEAD, NUMBER 만 사용
     for (size_t i = 0; i < file.length(); ++i)
     {
         if (isdigit(file[i]))
