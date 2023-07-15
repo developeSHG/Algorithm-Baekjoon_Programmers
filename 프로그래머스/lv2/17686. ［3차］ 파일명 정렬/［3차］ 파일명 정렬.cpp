@@ -30,7 +30,7 @@ vector<string> solution(vector<string> files) {
         const auto& b = conversion(f2);
         return (a[HEAD] != b[HEAD]) ? a[HEAD] < b[HEAD] : stoi(a[NUMBER]) < stoi(b[NUMBER]);
     };
-    stable_sort(files.begin(), files.end(), condition);
+    stable_sort(files.begin(), files.end(), condition); // 기존 순서를 보장하지 않는 sort() 대신 기존 순서를 보장하는 것 사용
     
     return files;
 }
