@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// 순열
 void permutation(string& numbers, set<int>& s, string str, int r) {
     if (!str.empty()) s.emplace(stoi(str));
 
@@ -20,6 +21,7 @@ void permutation(string& numbers, set<int>& s, string str, int r) {
     }
 }
 
+// 소수 판별
 bool isprime(int n)
 {
     if (n <= 1) return false;
