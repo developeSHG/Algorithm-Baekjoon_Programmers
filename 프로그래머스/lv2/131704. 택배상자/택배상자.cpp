@@ -13,7 +13,6 @@ int solution(vector<int> order) {
    for (size_t i = 0; i < order.size();)
     {
         const auto find = order[i];
-
         if (find < q.top() && !s.empty() && find != s.top()) break;
 
         if (!s.empty() && find == s.top()) s.pop(), ++i, ++answer;
