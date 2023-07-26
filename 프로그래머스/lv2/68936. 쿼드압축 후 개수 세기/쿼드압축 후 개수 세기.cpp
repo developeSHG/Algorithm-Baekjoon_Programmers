@@ -19,13 +19,7 @@ public:
     void operator()(const vector<vector<int>>& arr, vector<int>& answer, const QurdTree& root)
     {
         const auto pivot = arr[root.GetPos().x][root.GetPos().y];
-
         const int itv = root.GetCnt() / 2;
-        if (!itv) // itv가 0이면 Cnt가 1개, 즉 최소 단위까지 왔다는 의미
-        {
-            ++answer[pivot];
-            return;
-        }
 
         for (size_t i = 0; i < _cnt; ++i)
         {
