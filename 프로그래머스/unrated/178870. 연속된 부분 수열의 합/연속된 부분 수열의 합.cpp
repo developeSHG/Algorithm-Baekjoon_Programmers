@@ -20,12 +20,7 @@ vector<int> solution(vector<int> sequence, int k) {
             if (e-s+1 < subLen) { // 길이가 더 짧은 수열이면
                 subLen = e-s+1;
                 result = {s, e};
-            } else if (e-s+1 == subLen) {
-                if (s < result.first) { // 시작 인덱스가 더 작으면
-                    result = {s, e};
-                }
-            }
-            
+            } 
             sum -= sequence[s++];
         } 
         else sum -= sequence[s++];
