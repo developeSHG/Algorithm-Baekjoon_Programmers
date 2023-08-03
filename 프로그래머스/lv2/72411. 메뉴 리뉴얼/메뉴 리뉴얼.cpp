@@ -21,6 +21,9 @@ void combination(set<string>& set, const string& str, string res, int r, int nex
 vector<string> solution(vector<string> orders, vector<int> course) {
     vector<string> answer;
 
+    // course의 값 순대로 알파벳에 대한 모든 조합을 구한다.
+    // 구해진 조합을 알파벳 순으로 정렬하고 그 개수를 보관한다. (매번 최대 개수와 비교해서 갱신)
+    
     for (const auto& combi : course)
     {
         set<string> set; // 중복 단어 필터링하기 위해 set 사용
