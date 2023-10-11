@@ -8,10 +8,7 @@ using namespace std;
 int solution(vector<vector<string>> book_time) {
     vector<int> rooms;
 
-    std::sort(book_time.begin(), book_time.end(), [](const auto& v1, const auto& v2) {
-        return v1.front() < v2.front();
-    });
-
+    std::sort(book_time.begin(), book_time.end());
     std::for_each(book_time.begin(), book_time.end(), [&](const auto& v) {
         stringstream ss1(v.front());
         stringstream ss2(v.back());
