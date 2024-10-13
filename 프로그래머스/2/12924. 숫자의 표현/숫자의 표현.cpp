@@ -4,6 +4,7 @@
 using namespace std;
 
 int solution(int n) {
+    // 24.10.14
     int answer = 0;
     int lVal = 0, rVal = 0, sum = 0;
     
