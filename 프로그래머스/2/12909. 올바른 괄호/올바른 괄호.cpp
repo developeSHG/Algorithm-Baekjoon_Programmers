@@ -5,6 +5,7 @@ using namespace std;
 
 bool solution(string s)
 {
+    //24.10.15
     int pivot = 0;
     for(const auto& chr : s)
     {
