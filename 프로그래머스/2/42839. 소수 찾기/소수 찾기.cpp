@@ -14,7 +14,7 @@ const bool IsPrime(int n)
     return true && n > 1;
 }
 
-void expression(const string& numbers, unordered_set<int>& set, vector<int> idxList, string num)
+void expression(const string& numbers, unordered_set<int>& set, vector<int>& idxList, string num)
 {
     set.insert(stoi(num));
 
