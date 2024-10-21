@@ -14,17 +14,17 @@ const bool IsPrime(int n)
     return true && n > 1;
 }
 
-void expression(const string& numbers, unordered_set<int>& set, vector<int>& idxList, string num)
+void expression(const string& numbers, unordered_set<int>& set, vector<int>* idxList, string num)
 {
     set.insert(stoi(num));
 
     for (int i = 0; i < numbers.length(); ++i)
     {
-        if (find(idxList.begin(), idxList.end(), i) != idxList.end()) continue;
+        if (find(idxList->begin(), idxList->end(), i) != idxList->end()) continue;
 
-        idxList.push_back(i); num += numbers[i];
+        idxList->push_back(i); num += numbers[i];
         expression(numbers, set, idxList, num);
-        idxList.pop_back(); num.pop_back();
+        idxList->pop_back(); num.pop_back();
     }
 }
 
@@ -33,13 +33,7 @@ int solution(string numbers) {
     int answer = 0;
     unordered_set<int> set;
     
-    for (int i = 0; i < numbers.length(); ++i)
-    {
-        vector<int> idxList{i};
-        string num;
-        num += numbers[i];
-        expression(numbers, set, idxList, num);
-    }
+    expression(numbers, set, new vector<int>(), "0");
 
     for (const auto& n : set)
         answer += IsPrime(n) ? 1 : 0;
