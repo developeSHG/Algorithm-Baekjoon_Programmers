@@ -11,10 +11,7 @@ int solution(int storey) {
         int n = storey % 10;
         storey /= 10;
         
-        bool isUp = false;
-        if (n == 5 && storey % 10 >= 5) isUp = true;
-        else isUp = (n > 5); 
-            
+        bool isUp = (n == 5 && storey % 10 >= 5) || (n > 5);  
         answer += isUp ? (10 - n) : n; 
         storey += isUp ? 1 : 0;
     }
