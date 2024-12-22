@@ -3,22 +3,19 @@
 
 using namespace std;
 
-int answer = 0;
-
-void dfs(const vector<int>& numbers, const int& target, int sum, int cnt)
+const int dfs(const vector<int>& numbers, const int& target, int start, int sum)
 {
-    if (numbers.size() == cnt)
+    if (start == numbers.size())
     {
-        if (target == sum) ++answer;
-        return;
+        if (sum == target) return 1;
+        return 0;
     }
-
-    dfs(numbers, target, sum - numbers[cnt], cnt + 1);
-    dfs(numbers, target, sum + numbers[cnt], cnt + 1);
+    
+    return dfs(numbers, target, start + 1, sum + numbers[start])
+            + dfs(numbers, target, start + 1, sum - numbers[start]);
 }
 
 int solution(vector<int> numbers, int target) {
-    //24.10.29
-    dfs(numbers, target, 0, 0);
-    return answer;
+    //24.12.22
+    return dfs(numbers, target, 0, 0);
 }
